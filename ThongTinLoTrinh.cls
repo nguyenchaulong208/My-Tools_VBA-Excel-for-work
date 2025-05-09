@@ -13,10 +13,11 @@ Private ngay As String
 Private diaDiem As String
 Private thoiGianBd As String
 Private thoiGianKt As String
+Private lamThemGio As Integer
 Private soKmBd As Integer
 Private soKmKt As Integer
-Private quangDuong As Integer
-Private tongTienVe As Integer
+Private quangDuong As Long
+Private tongTienVe As Long
 Private soLuongVe As Integer
 Private bienSoXe As String
 Private taiXe As String
@@ -62,38 +63,38 @@ Public Property Get thoiGianKt_() As String
 End Property
 
 ' --- SoKmBd ---
-Public Property Let soKmBd_(ByVal newKmBd As Integer)
+Public Property Let soKmBd_(ByVal newKmBd As Long)
     soKmBd = newKmBd
 End Property
 
-Public Property Get soKmBd_() As Integer
+Public Property Get soKmBd_() As Long
     soKmBd_ = soKmBd
 End Property
 
 ' --- SoKmKt ---
-Public Property Let soKmKt_(ByVal newKmKt As Integer)
+Public Property Let soKmKt_(ByVal newKmKt As Long)
     soKmKt = newKmKt
 End Property
 
-Public Property Get soKmKt_() As Integer
+Public Property Get soKmKt_() As Long
     soKmKt_ = soKmKt
 End Property
 
 ' --- QuangDuong ---
-Public Property Let quangDuong_(ByVal newQD As Integer)
+Public Property Let quangDuong_(ByVal newQD As Long)
     quangDuong = newQD
 End Property
 
-Public Property Get quangDuong_() As Integer
+Public Property Get quangDuong_() As Long
     quangDuong_ = quangDuong
 End Property
 
 ' --- TongTienVe ---
-Public Property Let tongTienVe_(ByVal newTien As Integer)
+Public Property Let tongTienVe_(ByVal newTien As Long)
     tongTienVe = newTien
 End Property
 
-Public Property Get tongTienVe_() As Integer
+Public Property Get tongTienVe_() As Long
     tongTienVe_ = tongTienVe
 End Property
 
@@ -141,4 +142,12 @@ End Property
 Public Property Get tuyenDuong_() As String
     tuyenDuong_ = tuyenDuong
 End Property
+
+Public Property Let lamThemGio_(ByRef newLamThemGio As Integer)
+    lamThemGio = newLamThemGio
+End Property
+Public Property Get lamThemGio_() As Integer
+    lamThemGio_ = lamThemGio
+End Property
+
 
