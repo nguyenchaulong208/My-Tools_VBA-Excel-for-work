@@ -25,50 +25,88 @@ Dự án bao gồm các mô-đun VBA và mô-đun lớp, mỗi mô-đun đảm n
 - **DataLoTrinh.cls**: Mô-đun lớp lưu trữ các tham số đầu vào như biển số xe, khoảng thời gian và tên bảng tính.
 
 ## Yêu cầu
-- **Microsoft Excel**: Dự án yêu cầu Excel có bật VBA (cần bật macro).
+- **Microsoft Excel**: Yêu cầu Excel có bật VBA (macro phải được bật).
 - **Thiết lập Workbook**:
-  - Một bảng tính tên `TONG_HOP` chứa bảng `LoTrinh_Tong` với các cột như `BienSoXe`, `Ngay`, `DiaDiem`, v.v.
-  - Một bảng tính tên `THONG_TIN_CHUNG` chứa bảng `ThongTinChung` cho các cài đặt cụ thể của phương tiện (ví dụ: giờ làm việc tiêu chuẩn, giá cước).
-  - Một bảng tính tên `Export_LoTrinh` để xuất dữ liệu đã xử lý, với các vùng được đặt tên như `Ngay_Ex`, `TaiXe_Ex`, v.v.
-  - Các vùng được đặt tên trong workbook (ví dụ: `data_Export`) để tham chiếu các vùng dữ liệu.
+  - **Bảng tính `TONG_HOP`**:
+    - Chứa bảng `LoTrinh_Tong` với các cột:
+      - `BienSoXe`: Biển số xe.
+      - `Ngay`: Ngày lộ trình.
+      - `DiaDiem`: Địa điểm.
+      - `ThoiGianBatDau`: Thời gian bắt đầu.
+      - `ThoiGianKetThuc`: Thời gian kết thúc.
+      - `SoKmBatDau`: Số km bắt đầu.
+      - `SoKmKetThuc`: Số km kết thúc.
+      - `SoKmDaSuDung`: Quãng đường đã sử dụng.
+      - `TongTienVetc`: Tổng tiền vé VETC.
+      - `SoLuongVe`: Số lượng vé.
+      - `TaiXe`: Tên tài xế.
+      - `TuyenDuong`: Tuyến đường.
+      - `CongTy`: Khách hàng/công ty.
+  - **Bảng tính `THONG_TIN_CHUNG`**:
+    - Chứa bảng `ThongTinChung` với các cột:
+      - `BienSoXe`: Biển số xe.
+      - `BatDau`: Giờ làm việc bắt đầu tiêu chuẩn.
+      - `KetThuc`: Giờ làm việc kết thúc tiêu chuẩn.
+      - `DoanhThuThang`: Doanh thu tháng cố định.
+      - `DonGiaNgayChuNhat`: Đơn giá ngày Chủ Nhật.
+      - `DonGiaKmVuot`: Đơn giá km vượt.
+      - `DonGiaQuaGio`: Đơn giá làm thêm giờ.
+  - **Bảng tính `Export_LoTrinh`**:
+    - Chứa các vùng được đặt tên (Named Ranges):
+      - `data_Export`: Vùng dữ liệu chính của bảng lộ trình.
+      - `Ngay_Ex`: Cột ngày.
+      - `TaiXe_Ex`: Cột tài xế.
+      - `DiaDiem_Ex`: Cột địa điểm.
+      - `StartTime_Ex`: Cột thời gian bắt đầu.
+      - `EndTime_Ex`: Cột thời gian kết thúc.
+      - `OverTime_Ex`: Cột thời gian làm thêm giờ.
+      - `KM_Ex`: Cột quãng đường.
+      - `VeVETC_Ex`: Cột tổng tiền vé VETC.
+      - `SoLuong_Ex`: Cột số lượng vé.
+      - `SumOverTime_Ex`: Ô tổng thời gian làm thêm giờ.
+      - `SumKM_Ex`: Ô tổng quãng đường.
+      - `TT_TongThanhTien_Ex`: Ô tổng doanh thu.
+      - `TT_TienThue_Ex`: Ô tổng tiền thuế.
+      - `TT_TongCong_Ex`: Ô tổng cộng (doanh thu + thuế).
 
 ## Cài đặt
-1. **Tải hoặc sao chép**: Tải xuống kho lưu trữ này hoặc sao chép các tệp VBA vào máy cục bộ.
+1. **Tải hoặc sao chép**: Tải kho lưu trữ hoặc sao chép các tệp VBA vào máy cục bộ.
 2. **Nhập tệp VBA**:
    - Mở workbook Excel.
    - Nhấn `Alt + F11` để mở trình chỉnh sửa VBA.
-   - Nhấp chuột phải vào dự án trong Project Explorer, chọn `Import File` và nhập tất cả các tệp `.bas` và `.cls`.
+   - Nhấp chuột phải vào dự án trong Project Explorer, chọn `Import File`, nhập tất cả tệp `.bas` và `.cls`.
 3. **Thiết lập Workbook**:
-   - Đảm bảo các bảng tính (`TONG_HOP`, `THONG_TIN_CHUNG`, `Export_LoTrinh`) và bảng (`LoTrinh_Tong`, `ThongTinChung`) được thiết lập như mô tả trong Yêu cầu.
-   - Xác định các vùng được đặt tên trong Excel để khớp với các vùng được tham chiếu trong mã (ví dụ: `data_Export`, `Ngay_Ex`).
-4. **Bật Macro**: Đảm bảo macro được bật trong Excel để chạy mã VBA.
+   - Tạo các bảng tính `TONG_HOP`, `THONG_TIN_CHUNG`, `Export_LoTrinh`.
+   - Tạo bảng `LoTrinh_Tong` và `ThongTinChung` với các cột như mô tả.
+   - Định nghĩa các vùng được đặt tên (Named Ranges) trong Excel khớp với mã (ví dụ: `data_Export`, `Ngay_Ex`).
+4. **Bật Macro**: Đảm bảo macro được bật trong Excel.
 
 ## Hướng dẫn sử dụng
 1. **Chạy thủ tục chính**:
    - Mở workbook Excel.
-   - Nhấn `Alt + F8`, chọn `Main` từ danh sách macro và nhấp `Run`.
-   - Nhập biển số xe, ngày bắt đầu và ngày kết thúc khi được yêu cầu qua hộp thoại nhập liệu.
+   - Nhấn `Alt + F8`, chọn `Main`, nhấp `Run`.
+   - Nhập biển số xe, ngày bắt đầu, ngày kết thúc qua hộp thoại nhập liệu.
 2. **Kết quả đầu ra**:
-   - Bảng tính `Export_LoTrinh` sẽ được cập nhật với dữ liệu lộ trình, bao gồm các trường tính toán như thời gian làm thêm giờ và quãng đường.
-   - Các phép tính tổng hợp (ví dụ: tổng doanh thu, thuế) sẽ được ghi vào các ô được chỉ định trong `Export_LoTrinh`.
-   - Một hộp thoại thông báo sẽ xác nhận hoàn tất, cho biết liệu các dòng thừa có bị xóa hay không.
+   - Bảng `Export_LoTrinh` được cập nhật với dữ liệu lộ trình (ngày, tài xế, quãng đường, v.v.).
+   - Các ô tổng hợp (`SumOverTime_Ex`, `SumKM_Ex`, `TT_TongThanhTien_Ex`, v.v.) được điền giá trị.
+   - Hộp thoại thông báo xác nhận hoàn tất, cho biết nếu có dòng thừa bị xóa.
 3. **Kiểm tra dữ liệu**:
-   - Chạy macro `CheckCellEmpty` để đánh dấu các ô trống trong cột `SoKmDaSuDung` để xem xét.
+   - Chạy macro `CheckCellEmpty` để đánh dấu ô trống trong cột `SoKmDaSuDung`.
 
 ## Ví dụ quy trình
 1. Người dùng chạy macro `Main`.
 2. Đầu vào: Biển số xe (`29A-12345`), ngày bắt đầu (`01/05/2025`), ngày kết thúc (`31/05/2025`).
 3. Mã thực hiện:
-   - Đếm số bản ghi khớp trong `LoTrinh_Tong`.
-   - Điều chỉnh số dòng trong `Export_LoTrinh` để khớp với số bản ghi.
-   - Trích xuất và ghi dữ liệu lộ trình vào `Export_LoTrinh`.
-   - Tính toán thời gian làm thêm giờ và doanh thu, cập nhật các trường tổng hợp.
-4. Kết quả: Bảng `Export_LoTrinh` được điền dữ liệu lộ trình và tóm tắt tài chính.
+   - Đếm bản ghi khớp trong `LoTrinh_Tong`.
+   - Điều chỉnh dòng trong `Export_LoTrinh`.
+   - Trích xuất và ghi dữ liệu vào `Export_LoTrinh`.
+   - Tính thời gian làm thêm giờ, doanh thu, cập nhật ô tổng hợp.
+4. Kết quả: Bảng `Export_LoTrinh` chứa dữ liệu lộ trình và tóm tắt tài chính.
 
 ## Lưu ý
-- **Hiệu suất**: Mã tắt cập nhật màn hình và tính toán tự động trong quá trình thực thi để cải thiện hiệu suất. Các cài đặt này không được bật lại rõ ràng trong mã hiện tại, vì vậy hãy cân nhắc thêm `Application.ScreenUpdating = True` và `Application.Calculation = xlCalculationAutomatic` vào cuối thủ tục `Main` nếu cần.
-- **Xử lý lỗi**: Mã hiện tại giả định các đầu vào và định dạng dữ liệu hợp lệ. Hãy cân nhắc thêm xử lý lỗi cho các ngày không hợp lệ, bảng bị thiếu hoặc đầu vào trống.
-- **Tính toàn vẹn dữ liệu**: Đảm bảo bảng `LoTrinh_Tong` và `ThongTinChung` được điền đúng để tránh lỗi runtime.
+- **Hiệu suất**: Mã tắt cập nhật màn hình và tính toán tự động để tăng tốc. Cân nhắc thêm `Application.ScreenUpdating = True` và `Application.Calculation = xlCalculationAutomatic` vào cuối `Main` nếu cần.
+- **Xử lý lỗi**: Mã giả định đầu vào hợp lệ. Cân nhắc thêm xử lý lỗi cho ngày không hợp lệ, bảng thiếu hoặc đầu vào trống.
+- **Tính toàn vẹn dữ liệu**: Đảm bảo bảng `LoTrinh_Tong` và `ThongTinChung` được điền đúng để tránh lỗi.
 
 ## Liên hệ
 Nếu có thắc mắc hoặc cần hỗ trợ, vui lòng mở một issue trên kho lưu trữ GitHub hoặc liên hệ với người duy trì dự án.
