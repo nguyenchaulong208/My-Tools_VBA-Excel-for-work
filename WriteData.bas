@@ -14,15 +14,16 @@ Sub WriteToExcel()
     Dim soLuong As Range
     Dim nextRow As Long
     Dim item As ThongTinLoTrinh
+    Dim thu As Range
+   
         
     
     
-    'Tat nhap nhay man hinh va tu dong tinh toan
-    Application.ScreenUpdating = Fasle
-    Application.Calculation = xlCalculationManual
-    Application.EnableEvents = False
+    '
+    
     
     Set ws = ThisWorkbook.Worksheets(sheetName.tenSheet_)
+    Set thu = ws.Names("Thu_Ex").RefersToRange
     Set ngayThang = ws.Names("Ngay_Ex").RefersToRange
     Set taiXe = ws.Names("TaiXe_Ex").RefersToRange
     Set diaDiem = ws.Names("DiaDiem_Ex").RefersToRange
@@ -38,6 +39,8 @@ Sub WriteToExcel()
     
     
     For Each item In dataTbl
+        'Ghi du lieu vao sheet
+        ws.Cells(nextRow, thu.Column).Value = Format(Weekday(item.ngay_),"dddd")
         item.ngay_ = Format(CDate(item.ngay_), "dd/mm/yyyy")
         ws.Cells(nextRow, ngayThang.Column).Value = item.ngay_
         ws.Cells(nextRow, taiXe.Column).Value = item.taiXe_

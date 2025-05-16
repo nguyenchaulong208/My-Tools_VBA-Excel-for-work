@@ -11,6 +11,7 @@ Sub GetRecordFormDatabase()
     
     Dim cellNgay As Variant
     Dim cellDate As Date
+   
     
     
     

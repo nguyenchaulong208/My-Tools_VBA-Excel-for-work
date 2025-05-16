@@ -21,7 +21,9 @@ Sub Main()
     Dim nextRow As Long
     
    'Dem so luong dong va them dong
-    Application.ScreenUpdating = False
+    Application.ScreenUpdating = Fasle
+    Application.Calculation = xlCalculationManual
+    Application.EnableEvents = False
     
     Set wb = ThisWorkbook
     Set ws = wb.Worksheets("Export_LoTrinh")
@@ -62,7 +64,11 @@ Sub Main()
     MsgBox ("Hoan thanh trich xuat du lieu (da xoa dong thua)")
         
     End If
-
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+    Application.EnableEvents = True
+  
+    
 
 End Sub
 
