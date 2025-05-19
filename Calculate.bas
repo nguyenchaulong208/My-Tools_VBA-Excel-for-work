@@ -109,15 +109,24 @@ Sub CalRevenue()
         kmVuot = 0
     End If
 
+    '----------------------------
     
-    
-    'Tinh doanh thu
+    'Tinh doanh thu:
+    'Tinh don gia cuoc
     ttCuocThang = donGiaCuoc * 1
+    'Tinh thanh tien tang ca
     ttOverTime = (sumOverTime / 60) * donGiaOverTime
+    'Tinh thanh tien VETC
     ttVeVETC = sumVeVETC / 1.08
+    'Tinh Tong doanh thu
     ttDoanhThu = ttCuocThang + ttOverTime + ttVeVETC + (kmVuot * donGiaKmVuot)+ ttTangCuong
+    'Tinh Tien thue GTGT
     ttTienThue = ttDoanhThu * 0.08
+    'Tinh Tong cong thanh toan
     ttTongCong = ttDoanhThu + ttTienThue
+
+    '-----------------
+    'Tinh so gio tang ca
     soGioOT = sumOverTime / 60
     'Dem so ngay tang cuong
     Dim rowRange as Range
