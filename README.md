@@ -109,6 +109,3 @@ Dự án bao gồm các mô-đun VBA và mô-đun lớp, mỗi mô-đun đảm n
 - **Xử lý lỗi**: Mã giả định đầu vào hợp lệ. Cân nhắc thêm xử lý lỗi cho ngày không hợp lệ, bảng thiếu hoặc đầu vào trống.
 - **Tính toàn vẹn dữ liệu**: Đảm bảo bảng `LoTrinh_Tong` và `ThongTinChung` được điền đúng để tránh lỗi.
 
-## Liên hệ
-Nếu có thắc mắc hoặc cần hỗ trợ, vui lòng mở một issue trên kho lưu trữ GitHub hoặc liên hệ với người duy trì dự án.
-=======
