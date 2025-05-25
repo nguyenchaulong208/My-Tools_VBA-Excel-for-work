@@ -15,6 +15,9 @@ Sub WriteToExcel()
     Dim nextRow As Long
     Dim item As ThongTinLoTrinh
     Dim thu As Range
+    Dim soKmBatDau As Range
+    Dim soKmKetThuc As Range
+ 
    
         
     
@@ -33,6 +36,8 @@ Sub WriteToExcel()
     Set km = ws.Names("KM_Ex").RefersToRange
     Set veVETC = ws.Names("VeVETC_Ex").RefersToRange
     Set soLuong = ws.Names("SoLuong_Ex").RefersToRange
+    Set soKmBatDau = ws.Names("SoKmBatDau_Ex").RefersToRange
+    Set soKmKetThuc = ws.Names("SoKmKetThuc_Ex").RefersToRange
     
     nextRow = ngayThang.row 'dong dau tien cua vung
     
@@ -48,6 +53,8 @@ Sub WriteToExcel()
         ws.Cells(nextRow, startTime.Column).Value = item.thoiGianBd_
         ws.Cells(nextRow, endTime.Column).Value = item.thoiGianKt_
         ws.Cells(nextRow, overTime.Column).Value = OverTimeFromData(item.thoiGianBd_, item.thoiGianKt_)
+        ws.Cells(nextRow,soKmBatDau.Column).Value = item.soKmBd_
+        ws.Cells(nextRow,soKmKetThuc.Column).Value = item.soKmKt_
         ws.Cells(nextRow, km.Column).Value = item.quangDuong_
         ws.Cells(nextRow, veVETC.Column).Value = item.tongTienVe_
         ws.Cells(nextRow, soLuong.Column).Value = item.soLuongVe_
