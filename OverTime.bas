@@ -11,6 +11,8 @@ Dim baseEndTime As Date
 Dim resultStr As Double
 Dim resultEnd As Double
 Dim overTime As Integer
+Dim overTimeStart As Double
+Dim overTimeEnd As Double
 
 Dim row As ListRow
 
@@ -26,18 +28,25 @@ Dim row As ListRow
         End If
 
     Next row
-    
+    ' So sanh voi gio bat dau va ket thuc trong bang thong tin chung
+    'overTimeStart = startTime - baseStartTime
+    'overTimeEnd = endTime - baseEndTime
     'Tinh gio OverTime
-    If startTime < baseStartTime Then
+  
+    'If startTime < baseStartTime Then
         'Tinh toan va quy doi sang phut
-         resultStr = (baseStartTime - startTime) * 24 * 60
-    End If
+        ' resultStr = (baseStartTime - startTime) * 24 * 60
+    'End If
     
-    If endTime > baseEndTime Then
-        'Tinh toan va quy doi sang phut
-        resultEnd = (endTime - baseEndTime) * 24 * 60
-    End If
-    
+    ' If endTime > baseEndTime Then
+    '     'Tinh toan va quy doi sang phut
+    '     resultEnd = (endTime - baseEndTime) * 24 * 60
+    ' End If
+    '----------------------------------------
+    'Viet lat cach tinh khac
+
+    resultStr = Application.Max(0, (baseStartTime - startTime) * 24 *60)
+    resultEnd = Application.Max(0, (endTime - baseEndTime) * 24 *60)
     overTime = resultStr + resultEnd
     'Return gia tri cua OverTime
     OverTimeFromData = overTime
